@@ -1,6 +1,6 @@
+import 'package:FitStack/app/routing/appRouter.gr.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:dot_navigation_bar/dot_navigation_bar.dart';
-import 'package:fitstackapp/core/routing/appRouter.gr.dart';
 import 'package:flutter/material.dart';
 import 'package:line_icons/line_icons.dart';
 
@@ -17,8 +17,17 @@ class _Main_ViewState extends State<Main_View> {
   @override
   Widget build(BuildContext context) {
     return AutoTabsScaffold(
+      backgroundColor: Theme.of(context).colorScheme.background,
       bottomNavigationBuilder: (context, tabsRouter) {
         return DotNavigationBar(
+          boxShadow: [
+            BoxShadow(
+              color: Colors.grey.shade600.withOpacity(.3),
+              spreadRadius: 1,
+              blurRadius: 10,
+            ),
+          ],
+          enableFloatingNavBar: true,
           currentIndex: tabsRouter.activeIndex,
           dotIndicatorColor: Colors.transparent,
           onTap: tabsRouter.setActiveIndex,
@@ -53,7 +62,11 @@ class _Main_ViewState extends State<Main_View> {
         );
       },
       routes: [
-        DashBoard_ViewRoute(),
+        DashBoard_View(),
+        DashBoard_View(),
+        DashBoard_View(),
+        DashBoard_View(),
+        Settings_View(),
       ],
     );
   }
